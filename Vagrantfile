@@ -31,6 +31,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 mv *.zip /usr/local/selenium
 mv *.deb /usr/local/selenium
 unzip /usr/local/selenium/*.zip -d /usr/local/selenium
+chmod a+rx chromedriver
 dpkg -i /usr/local/selenium/google-chrome*; sudo apt-get -f install -y
 echo ==== Setting up Xvfb ====
 apt-get install xvfb -y
@@ -38,13 +39,9 @@ cp /vagrant/Xvfb /etc/init.d/.
 update-rc.d Xvfb defaults
 service Xvfb start
 echo ==== Setting up selenium ====
-<<<<<<< HEAD
-wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar
-=======
 cp /vagrant/config.env /usr/local/selenium
 source /usr/local/selenium/config.env
 wget -O $SELENIUM_JAR $SELENIUM_DOWNLOAD_URL
->>>>>>> versioning
 mv *.jar /usr/local/selenium/.
 cp /vagrant/selenium-grid /etc/init.d/.
 update-rc.d selenium-grid defaults
